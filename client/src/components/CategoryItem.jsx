@@ -28,6 +28,10 @@ const Info = styled.div`
 const Title = styled.h1`
   color: #0099ff;
   margin-bottom: 20px;
+  background: #fff;
+  padding: 10px 10px;
+  border: 1px solid #0099ff;
+  border-radius: 10px;
   ${mobile({ fontSize: "20px" })};
 `;
 const Button = styled.button`

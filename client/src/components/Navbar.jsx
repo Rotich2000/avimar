@@ -4,8 +4,11 @@ import SearchIcon from "@mui/icons-material/Search";
 import { Badge } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { mobile } from "../responsive";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { logOut } from "../redux/userRedux";
+import image from "../images/Avimar.png";
+import kenya from "../images/madeinkenya.png";
 
 const Container = styled.div`
   height: 100px;
@@ -21,11 +24,23 @@ const Wrapper = styled.div`
 `;
 const Left = styled.div`
   flex: 1;
+  display: flex;
+  justify-content: space-around;
 `;
 
-const Logo = styled.h1`
-  font-weight: bold;
-  font-size: 1.5em;
+const Logo = styled.img`
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+  ${mobile({ fontSize: "24px" })};
+`;
+const Kenya = styled.img`
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 100% 0%;
   cursor: pointer;
   ${mobile({ fontSize: "24px" })};
 `;
@@ -66,6 +81,7 @@ const Right = styled.div`
   ${mobile({ flex: 2, justifyContent: "center" })};
 `;
 const MenuItem = styled.div`
+  color: #000;
   font-size: 14px;
   cursor: pointer;
   margin-left: 25px;
@@ -73,14 +89,19 @@ const MenuItem = styled.div`
 `;
 
 const Navbar = () => {
+  const user = useSelector((state) => state.user.currentUser);
   const quantity = useSelector((state) => state.cart.quantity);
+  const dispatch = useDispatch();
   return (
     <Container>
       <Wrapper>
         <Left>
-          <Logo>
-            Avi<span style={{ color: "#0099ff" }}>mar</span>
-          </Logo>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <Logo src={image} alt="logo" />
+          </Link>
+          <Link to="/products/kenya" style={{ textDecoration: "none" }}>
+            <Kenya src={kenya} alt="logo" />
+          </Link>
         </Left>
         <Center>
           <SearchContainer>
@@ -92,8 +113,17 @@ const Navbar = () => {
           </SearchContainer>
         </Center>
         <Right>
-          <MenuItem>REGISTER</MenuItem>
-          <MenuItem>SIGN IN</MenuItem>
+          <Link to="register" style={{ textDecoration: "none" }}>
+            <MenuItem>REGISTER</MenuItem>
+          </Link>
+          {user ? (
+            <MenuItem onClick={() => dispatch(logOut())}>LOG OUT</MenuItem>
+          ) : (
+            <Link to="login" style={{ textDecoration: "none" }}>
+              <MenuItem>SIGN IN</MenuItem>
+            </Link>
+          )}
+
           <Link to="/cart">
             <MenuItem>
               <Badge badgeContent={quantity} color="primary">

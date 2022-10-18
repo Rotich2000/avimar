@@ -1,84 +1,123 @@
 import React from "react";
-import { mobile } from "../responsive";
-
-import styled from "styled-components";
-const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80")
-      no-repeat center;
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-const Wrapper = styled.div`
-  width: 40%;
-  padding: 20px;
-  background: #fff;
-  ${mobile({ width: "75%" })};
-`;
-const Title = styled.h1`
-  font-size: 24px;
-  font-weight: 300;
-  color: #0099ff;
-  text-align: center;
-`;
-const Form = styled.form`
-  display: flex;
-  flex-wrap: wrap;
-`;
-const Input = styled.input`
-  flex: 1;
-  min-width: 40%;
-  margin: 20px 10px 0px 0px;
-  outline: none;
-  padding: 10px;
-  font-size: 20px;
-  ${mobile({ fontSize: "12px" })};
-`;
-const Agreement = styled.span`
-  font-size: 14px;
-  margin: 20px 0;
-`;
-const Button = styled.button`
-  width: 100%;
-  border: none;
-  padding: 20px 15px;
-  cursor: pointer;
-  background: #0099ff;
-  text-transform: uppercase;
-  color: #fff;
-  transition: all 0.5s ease;
-  &:hover {
-    background: darkblue;
-  }
-`;
+// import { mobile } from "../responsive";
+import "./Register.css";
+import image from "../images/Avimar.png";
 
 const Register = () => {
   return (
-    <Container>
-      <Wrapper>
-        <Title>Create an Account</Title>
-        <Form>
-          <Input placeholder="first name" />
-          <Input placeholder="last name" />
-          <Input placeholder="username" />
-          <Input placeholder="email" />
-          <Input placeholder="password" />
-          <Input placeholder="confirm password" />
-          <Agreement>
-            By Creating an account, I consent to the processing of my personal
-            data in accordance with the{" "}
-            <b>
-              <em>PRIVACY POLICY</em>
-            </b>
-          </Agreement>
-          <Button>Register</Button>
-        </Form>
-      </Wrapper>
-    </Container>
+    <>
+      <div className="login-card-container">
+        <div className="login-card">
+          <div className="login-card-logo">
+            <img src={image} alt="logo" />
+          </div>
+          <div className="login-card-header">
+            <h1>Register</h1>
+            <div>Please create an account</div>
+          </div>
+          <form className="login-card-form">
+            <div className="form-item">
+              <span className="form-item-icon material-symbols-rounded">
+                person
+              </span>
+              <input
+                type="email"
+                name=""
+                placeholder="Enter username!"
+                required
+                autoFocus
+              ></input>
+            </div>
+            <div className="form-item">
+              <span className="form-item-icon material-symbols-rounded">
+                mail
+              </span>
+              <input
+                type="email"
+                name=""
+                placeholder="Enter email!"
+                required
+                autoFocus
+              ></input>
+            </div>
+            <div className="form-item">
+              <span className="form-item-icon material-symbols-rounded">
+                lock
+              </span>
+              <input
+                type="password"
+                name=""
+                placeholder="Enter password!"
+                required
+                autoFocus
+              ></input>
+            </div>
+            <div className="form-item">
+              <span className="form-item-icon material-symbols-rounded">
+                lock
+              </span>
+              <input
+                type="password"
+                name=""
+                placeholder="Confirm password!"
+                required
+                autoFocus
+              ></input>
+            </div>
+            {/* <div className="form-item-other">
+              <div className="checkbox">
+                <input type="checkbox" name="" id="rememberMe"></input>
+                <label htmlFor="rememberMe">Remember Me</label>
+              </div>
+              <a href="#">I forgot my password!</a>
+            </div> */}
+            <button type="submit">Register</button>
+          </form>
+          {/* <div className="login-card-footer">
+            Don't have an account? <a href="#">Create a free account</a>.
+          </div> */}
+        </div>
+        <div className="login-card-social">
+          <div>Other Sign-in platform</div>
+          <div className="login-card-social-btn">
+            <a href="#">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="icon icon-tabler icon-tabler-brand-facebook"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                strokeWidth="2"
+                stroke="currentColor"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"></path>
+              </svg>
+            </a>
+            <a href="#">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="icon icon-tabler icon-tabler-brand-twitter"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                strokeWidth="2"
+                stroke="currentColor"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

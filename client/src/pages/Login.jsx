@@ -1,73 +1,11 @@
 import React, { useState } from "react";
-import { mobile } from "../responsive";
+// import { mobile } from "../responsive";
 import styled from "styled-components";
 import { login } from "../redux/apiCalls";
 import { useDispatch, useSelector } from "react-redux";
-const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("https://images.unsplash.com/photo-1423666639041-f56000c27a9a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=874&q=80")
-      no-repeat center;
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-const Wrapper = styled.div`
-  width: 25%;
-  padding: 20px;
-  background: #fff;
-  ${mobile({ width: "75%" })};
-`;
-const Title = styled.h1`
-  font-size: 24px;
-  font-weight: 300;
-  color: #0099ff;
-  text-align: center;
-  ${mobile({ fontSize: "16px" })};
-`;
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-`;
-const Input = styled.input`
-  flex: 1;
-  margin: 10px 0;
-  outline: none;
-  padding: 10px;
-  font-size: 20px;
-  ${mobile({ fontSize: "12px" })};
-`;
-
-const Button = styled.button`
-  width: 100%;
-  border: none;
-  padding: 20px 15px;
-  margin: 20px 0px;
-  cursor: pointer;
-  background: #0099ff;
-  text-transform: uppercase;
-  color: #fff;
-  transition: all 0.5s ease;
-  &:hover {
-    background: darkblue;
-  }
-  &:disabled {
-    color: red;
-    cursor: not-allowed;
-  }
-`;
-const Link = styled.a`
-  margin: 5px 0;
-  font-size: 12px;
-  text-decoration: underline;
-  cursor: pointer;
-`;
-
-const Error = styled.span`
-  color: red;
-`;
+import "./Login.css";
+import image from "../images/Avimar.png";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -81,28 +19,106 @@ const Login = () => {
   };
 
   return (
-    <Container>
-      <Wrapper>
-        <Title>SIGN IN</Title>
-        <Form>
-          <Input
-            placeholder="username"
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <Input
-            placeholder="password"
-            onChange={(e) => setPassword(e.target.value)}
-            type="password"
-          />
-          <Button onClick={handleClick} disabled={isFetching}>
-            Login
-          </Button>
-          {error && <Error>Incorrect credentials!!</Error>}
-          <Link>Forgot password?</Link>
-          <Link>Create a new account</Link>
-        </Form>
-      </Wrapper>
-    </Container>
+    <>
+      <div className="login-card-container">
+        <div className="login-card">
+          <div className="login-card-logo">
+            <img src={image} alt="logo" />
+          </div>
+          <div className="login-card-header">
+            <h1>Sign In</h1>
+            <div>Please login to use the platform</div>
+          </div>
+          <form className="login-card-form">
+            <div className="form-item">
+              <span className="form-item-icon material-symbols-rounded">
+                person
+              </span>
+              <input
+                type="text"
+                name=""
+                placeholder="Enter username!"
+                onChange={(e) => setUsername(e.target.value)}
+                required
+                autoFocus
+              ></input>
+            </div>
+
+            <div className="form-item">
+              <span className="form-item-icon material-symbols-rounded">
+                lock
+              </span>
+              <input
+                type="password"
+                name=""
+                placeholder="Enter password!"
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                autoFocus
+              ></input>
+            </div>
+            <div className="form-item-other">
+              <div className="checkbox">
+                <input type="checkbox" name="" id="rememberMe"></input>
+                <label htmlFor="rememberMe">Remember Me</label>
+              </div>
+              <a href="#">I forgot my password!</a>
+            </div>
+            <button onClick={handleClick} disabled={isFetching}>
+              Sign In
+            </button>
+            {error ? (
+              " "
+            ) : (
+              <span style={{ color: "red" }}>Incorrect credentials!!</span>
+            )}
+          </form>
+          <div className="login-card-footer">
+            Don't have an account?{" "}
+            <Link to="/register">Create a free account</Link>.
+          </div>
+        </div>
+        <div className="login-card-social">
+          <div>Other Sign-in platform</div>
+          <div className="login-card-social-btn">
+            <a href="#">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="icon icon-tabler icon-tabler-brand-facebook"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                strokeWidth="2"
+                stroke="currentColor"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"></path>
+              </svg>
+            </a>
+            <a href="#">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="icon icon-tabler icon-tabler-brand-twitter"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                strokeWidth="2"
+                stroke="currentColor"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

@@ -1,0 +1,192 @@
+.login-card-container {
+  min-height: 100vh;
+  background: linear-gradient(to right, #036db4, #0099ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.login-card {
+  width: 450px;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 4rem;
+  border-radius: 10px;
+  position: relative;
+}
+
+.login-card:before {
+  content: "";
+  position: absolute;
+  background: rgba(255, 255, 255, 0.15);
+  inset: 0;
+  transform: rotate(-5deg);
+  z-index: -1;
+}
+
+.login-card-logo {
+  margin-bottom: 2rem;
+}
+
+.login-card-logo img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.login-card-logo,
+.login-card-header,
+.login-card-footer {
+  text-align: center;
+}
+
+.login-card a {
+  text-decoration: none;
+  color: #35339a;
+}
+
+.login-card a:hover {
+  text-decoration: underline;
+}
+
+.login-card-header {
+  margin-bottom: 2rem;
+}
+
+.login-card-header h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.login-card-header h1 + div {
+  font-size: calc(1rem * 0.8);
+  opacity: 0.8;
+}
+
+.login-card-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.login-card-form .form-item {
+  position: relative;
+}
+
+.login-card-form .form-item .form-item-icon {
+  position: absolute;
+  top: 1rem;
+  left: 1.4rem;
+  font-size: 1.3rem;
+  opacity: 0.4;
+}
+
+.login-card-form .checkbox {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.login-card-form .form-item-other {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: calc(1rem * 0.8);
+  margin-bottom: 0.5rem;
+}
+
+.login-card-footer {
+  margin-top: 1.5rem;
+  font-size: calc(1rem * 0.8);
+}
+
+.login-card input[type="text"],
+.login-card input[type="password"],
+.login-card input[type="email"] {
+  border: 0;
+  background: rgba(255, 255, 255, 0.3);
+  outline: none;
+  padding: 1rem 1.5rem;
+  padding-left: calc(1rem * 3.5);
+  border-radius: 100px;
+  width: 100%;
+  transition: all 0.5s ease;
+}
+
+.login-card input:focus {
+  background: #fff;
+}
+
+.login-card input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #000;
+}
+
+.login-card-form button {
+  background: #000;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: all 0.5s ease;
+  border: 0;
+  cursor: pointer;
+}
+
+.login-card-form button:hover {
+  background: rgba(255, 255, 255, 0.85);
+  color: #000;
+}
+
+.login-card-social {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.login-card-social > div {
+  opacity: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: calc(1rem * 0.8);
+}
+
+.login-card-social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.login-card-social-btn a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  transition: all 0.5s ease;
+}
+
+.login-card-social-btn a:hover {
+  background: #fff;
+  transform: scale(1.1);
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    padding: 2rem 0;
+  }
+  .login-card {
+    width: 280px;
+    padding: 2rem;
+  }
+}

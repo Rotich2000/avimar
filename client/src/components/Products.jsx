@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-import Product from "./Product";
+// import Product from "./Product";
 // import { popularProducts } from "../data";
 import styled from "styled-components";
 import axios from "axios";
+import Prod from "./Prod";
 
 const Container = styled.div`
   display: flex;
   padding: 20px;
-  flex-wrap: wrap;
+  align-items: center;
   justify-content: space-between;
 `;
 
@@ -61,10 +62,10 @@ const Products = ({ cat, filters, sort }) => {
   return (
     <Container>
       {cat
-        ? filteredProducts.map((item) => <Product item={item} key={item.id} />)
+        ? filteredProducts.map((item) => <Prod item={item} key={item.id} />)
         : products
             .slice(0, 8)
-            .map((item) => <Product item={item} key={item.id} />)}
+            .map((item) => <Prod item={item} key={item.id} />)}
     </Container>
   );
 };
